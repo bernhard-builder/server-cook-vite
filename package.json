@@ -1,0 +1,73 @@
+{
+  "name": "server-cook",
+  "displayName": "Server Cook",
+  "description": "World-class mission control for local development servers and processes",
+  "version": "0.5.6",
+  "publisher": "server-cook",
+  "icon": "resources/server-cook.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "serverCook.openMissionControl",
+        "title": "Open Mission Control",
+        "category": "Server Cook"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "server-cook-sidebar",
+          "title": "Server Cook",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "server-cook-sidebar": [
+        {
+          "type": "webview",
+          "id": "serverCook.missionControl",
+          "name": "Mission Control"
+        }
+      ],
+      "explorer": [
+        {
+          "type": "webview",
+          "id": "serverCook.explorerView",
+          "name": "Server Cook",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "npm run build:extension && npm run build:webview",
+    "build:extension": "tsc -p ./",
+    "build:webview": "cd webview && npm run build",
+    "watch": "tsc -watch -p ./",
+    "watch:webview": "cd webview && npm run dev",
+    "pretest": "npm run build && npm run lint",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package --allow-missing-repository --out server-cook-0.5.6.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {}
+}
