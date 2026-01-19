@@ -3,7 +3,7 @@
   "displayName": "Server Cook",
   "description": "World-class mission control for local development servers and processes",
   "version": "0.5.6",
-  "publisher": "server-cook",
+  "publisher": "BernhardRieder",
   "icon": "resources/server-cook.png",
   "engines": {
     "vscode": "^1.85.0"
